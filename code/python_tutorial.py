@@ -12,8 +12,9 @@ class Square:
     Returns:
         None
     """
-    def __init__(self):
-        pass
+    def __init__(self, name, length):
+        self.name = name
+        self.length = length
 
 
 class Multiplier:
@@ -22,7 +23,7 @@ class Multiplier:
     Args:
         None
     """
-    def __call__(self):
+    def __call__(self, num1, num2):
         """
         Implement the __call__ method here
         Args:
@@ -32,7 +33,7 @@ class Multiplier:
         Returns:
             result (int): The result of the multiplication
         """
-        pass
+        return num1 * num2
 
 
 class LoggingTape:
@@ -43,25 +44,26 @@ class LoggingTape:
         """
         Initialize variables
         """
-        self.logs = ...
+        self.logs = []
 
     def __enter__(self):
         """
         Called when entering the context
         """
-        pass
+        Logger.logging_tape = self
+        return self
 
     def __exit__(self, *args):
         """
         Called when exiting the context
         """
-        pass
+        Logger.logging_tape = None
 
     def add_to_log(self, new_log):
         """
         Add a new log to the logs
         """
-        pass
+        self.logs.append(new_log)
 
     def print_logs(self):
         """
